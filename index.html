@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="./lib/emailvalidator.js"></script>
     <title>JQuery Plugin</title>
 </head>
 <body>
     <label>Email</label>
     <input type = "text" name = "email" id="input">
     <p id="show"></p>
+
+    <script>
+        $('#input').keyup(function(){
+            let email = $('#input').val();
+            // console.log(email)
+            if($().emailValidator(email)){
+                $("#input").removeClass("error")
+                $("#input").addClass("success")
+                $("#show").text(` `)
+            }else{
+                $("#input").removeClass("success")
+                $("#input").addClass("error")
+                $("#show").text(`Email address is not valid`)
+            }
+        })
+    </script>
 </body>
 </html>
